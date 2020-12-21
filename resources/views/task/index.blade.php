@@ -21,8 +21,8 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->title}}</td>
                 <td>{{$item->message}}</td>
-                <td>{{$item->ideal}}</td>
-                <td>{{$item->reality}}</td>
+                <td>{{$item->s2m($item->ideal)}}</td>
+                <td>{{$item->s2m($item->reality)}}</td>
             </tr>
         @endforeach
     </table>

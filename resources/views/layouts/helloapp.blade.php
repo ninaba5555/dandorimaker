@@ -45,6 +45,7 @@
 
         th {
             background-color: #999;
+            border: solid 1px #999;
             color: #fff;
             padding: 5px 10px;
         }
