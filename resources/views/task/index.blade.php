@@ -1,10 +1,11 @@
 @extends('layouts.helloapp')
 
-@section('title', 'Task.index')
+@section('title', 'Task.Index')
 
 @section('menubar')
     @parent
     インデックスページ
+    <a href="/task/add">新規登録</a>
 @endsection
 
 @section('content')

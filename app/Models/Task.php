@@ -9,6 +9,13 @@ class Task extends Model
 {
     use HasFactory;
 
+    protected $guarded = array('id');
+
+    public static $rules = array(
+        'title' => "required",
+        'ideal' => "integer",
+    );
+
     /**
      * 秒を分秒に変換
      */
