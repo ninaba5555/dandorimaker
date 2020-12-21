@@ -10,15 +10,19 @@
 @section('content')
     <table>
         <tr>
-            <th>Name</th>
-            <th>Mail</th>
-            <th>Age</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Message</th>
+            <th>Ideal</th>
+            <th>Reality</th>
         </tr>
         @foreach ($items as $item)
             <tr>
-                <td>{{$item->name}}</td>
-                <td>{{$item->mail}}</td>
-                <td>{{$item->age}}</td>
+                <td>{{$item->id}}</td>
+                <td>{{$item->title}}</td>
+                <td>{{$item->message}}</td>
+                <td>{{$item->ideal}}</td>
+                <td>{{$item->reality}}</td>
             </tr>
         @endforeach
     </table>
