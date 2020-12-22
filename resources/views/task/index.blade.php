@@ -16,6 +16,7 @@
             <th>Message</th>
             <th>Ideal</th>
             <th>Reality</th>
+            <th>操作</th>
         </tr>
         @foreach ($items as $item)
             <tr>
@@ -24,6 +25,9 @@
                 <td>{{$item->message}}</td>
                 <td>{{$item->s2m($item->ideal)}}</td>
                 <td>{{$item->s2m($item->reality)}}</td>
+                <td>
+                    <a href="/task/edit?id={{$item->id}}">編集</a>
+                </td>
             </tr>
         @endforeach
     </table>

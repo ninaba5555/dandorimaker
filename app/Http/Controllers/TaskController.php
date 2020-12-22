@@ -31,7 +31,22 @@ class TaskController extends Controller
 
         $form['reality'] = 0;
         $task->fill($form)->save();
+        return redirect('/task');
+    }
 
+    public function edit(Request $request)
+    {
+        $task = Task::find($request->id);
+        return view('task.edit', ['form' => $task]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, Task::$rules);
+        $task = Task::find($request->id);
+        $form = $request->all();
+        unset($form['_token']);
+        $task->fill($form)->save();
         return redirect('/task');
     }
 }
