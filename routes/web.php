@@ -24,3 +24,5 @@ Route::get('task/add', [Taskcontroller::class, 'add']);
 Route::post('task/add', [Taskcontroller::class, 'create']);
 Route::get('task/edit', [Taskcontroller::class, 'edit']);
 Route::post('task/edit', [Taskcontroller::class, 'update']);
+Route::get('task/del', [Taskcontroller::class, 'delete']);
+Route::post('task/del', [Taskcontroller::class, 'remove']);

@@ -49,4 +49,16 @@ class TaskController extends Controller
         $task->fill($form)->save();
         return redirect('/task');
     }
+
+    public function delete(Request $request)
+    {
+        $task = Task::find($request->id);
+        return view('task.del', ['form' => $task]);
+    }
+
+    public function remove(Request $request)
+    {
+        Task::find($request->id)->delete();
+        return redirect('/task');
+    }
 }

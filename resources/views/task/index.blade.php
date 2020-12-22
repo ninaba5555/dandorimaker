@@ -26,7 +26,8 @@
                 <td>{{$item->s2m($item->ideal)}}</td>
                 <td>{{$item->s2m($item->reality)}}</td>
                 <td>
-                    <a href="/task/edit?id={{$item->id}}">編集</a>
+                    <a href="/task/edit?id={{$item->id}}">編集</a>｜
+                    <a href="/task/del?id={{$item->id}}">削除</a>
                 </td>
             </tr>
         @endforeach
