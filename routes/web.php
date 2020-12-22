@@ -29,3 +29,5 @@ Route::get('task/del', [TaskController::class, 'delete']);
 Route::post('task/del', [TaskController::class, 'remove']);
 
 Route::get('plan', [PlanController::class, 'index']);
+Route::get('plan/add', [PlanController::class, 'add']);
+Route::post('plan/add', [PlanController::class, 'create']);
