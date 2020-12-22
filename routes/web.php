@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('task', [Taskcontroller::class, 'index']);
-Route::get('task/add', [Taskcontroller::class, 'add']);
-Route::post('task/add', [Taskcontroller::class, 'create']);
-Route::get('task/edit', [Taskcontroller::class, 'edit']);
-Route::post('task/edit', [Taskcontroller::class, 'update']);
-Route::get('task/del', [Taskcontroller::class, 'delete']);
-Route::post('task/del', [Taskcontroller::class, 'remove']);
+Route::get('task', [TaskController::class, 'index']);
+Route::get('task/add', [TaskController::class, 'add']);
+Route::post('task/add', [TaskController::class, 'create']);
+Route::get('task/edit', [TaskController::class, 'edit']);
+Route::post('task/edit', [TaskController::class, 'update']);
+Route::get('task/del', [TaskController::class, 'delete']);
+Route::post('task/del', [TaskController::class, 'remove']);
+
+Route::get('plan', [PlanController::class, 'index']);
