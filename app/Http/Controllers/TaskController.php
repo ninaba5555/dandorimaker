@@ -9,8 +9,15 @@ class TaskController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Task::all();
-        return view('task.index', ['items' => $items]);
+        if (isset($request->plan_id)) {
+            // プランに紐づくタスク一覧を表示
+            $items = Task::where('plan_id', $request->plan_id)->get();
+            return view('task.index', ['items' => $items])
+                ->with('plan_id', $request->plan_id);
+        } else {
+            $items = Task::all();
+            return view('task.index', ['items' => $items]);
+        }
     }
 
     public function add(Request $request)

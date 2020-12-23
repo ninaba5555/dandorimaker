@@ -5,7 +5,11 @@
 @section('menubar')
     @parent
     インデックスページ
-    <a href="/task/add">新規登録</a>
+    @if (isset($plan_id))
+        <a href="/task/add?plan_id={{$plan_id}}">プランのタスクを登録する</a>
+    @else
+        <a href="/task/add">タスクを登録する</a>
+    @endif
 @endsection
 
 @section('content')
