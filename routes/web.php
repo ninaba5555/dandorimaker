@@ -33,3 +33,5 @@ Route::get('plan/add', [PlanController::class, 'add']);
 Route::post('plan/add', [PlanController::class, 'create']);
 Route::get('plan/edit', [PlanController::class, 'edit']);
 Route::post('plan/edit', [PlanController::class, 'update']);
+Route::get('plan/del', [PlanController::class, 'delete']);
+Route::post('plan/del', [PlanController::class, 'remove']);

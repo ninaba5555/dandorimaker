@@ -49,4 +49,16 @@ class PlanController extends Controller
         $plan->fill($form)->save();
         return redirect('/plan');
     }
+
+    public function delete(Request $request)
+    {
+        $plan = Plan::find($request->id);
+        return view('plan.del', ['form' => $plan]);
+    }
+
+    public function remove(Request $request)
+    {
+        $plan = Plan::find($request->id)->delete();
+        return redirect('/plan');
+    }
 }
