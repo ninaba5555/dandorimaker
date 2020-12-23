@@ -33,4 +33,20 @@ class PlanController extends Controller
         $plan->fill($form)->save();
         return redirect('/plan');
     }
+
+    public function edit(Request $request)
+    {
+        $plan = Plan::find($request->id);
+        return view('plan.edit', ['form' => $plan]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, Plan::$rules);
+        $plan = Plan::find($request->id);
+        $form = $request->all();
+        unset($form['_token']);
+        $plan->fill($form)->save();
+        return redirect('/plan');
+    }
 }

@@ -31,3 +31,5 @@ Route::post('task/del', [TaskController::class, 'remove']);
 Route::get('plan', [PlanController::class, 'index']);
 Route::get('plan/add', [PlanController::class, 'add']);
 Route::post('plan/add', [PlanController::class, 'create']);
+Route::get('plan/edit', [PlanController::class, 'edit']);
+Route::post('plan/edit', [PlanController::class, 'update']);
