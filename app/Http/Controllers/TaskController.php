@@ -41,6 +41,7 @@ class TaskController extends Controller
         // TODO: 分秒入力にしたい
 
         $form['reality'] = 0;
+        $form['sort'] = time();
         $task->fill($form)->save();
 
         return redirect()->action(
