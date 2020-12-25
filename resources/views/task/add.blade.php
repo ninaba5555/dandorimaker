@@ -21,6 +21,17 @@
         <table>
             @csrf
             <tr>
+                <th>プランID</th>
+                @if (isset($plan_id))
+                    <td>
+                        {{$plan_id}}
+                        <input type="hidden" name="plan_id" value="{{$plan_id}}"></td>    
+                    </td>
+                @else
+                    <td><input type="text" name="plan_id" value="{{old('plan_id')}}"></td>
+                @endif
+            </tr>
+            <tr>
                 <th>Title</th>
                 <td><input type="text" name="title" value="{{old('title')}}"></td>
             </tr>

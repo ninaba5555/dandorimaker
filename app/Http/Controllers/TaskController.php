@@ -22,7 +22,11 @@ class TaskController extends Controller
 
     public function add(Request $request)
     {
-        return view('task.add');
+        if (isset($request->plan_id)) {
+            return view('task.add')->with('plan_id', $request->plan_id);
+        } else {
+            return view('task.add');
+        }
     }
 
     public function create(Request $request)
@@ -38,7 +42,11 @@ class TaskController extends Controller
 
         $form['reality'] = 0;
         $task->fill($form)->save();
-        return redirect('/task');
+
+        return redirect()->action(
+            [TaskController::class, 'index'],
+            ['plan_id' => $task['plan_id']]
+        );
     }
 
     public function edit(Request $request)
@@ -54,7 +62,11 @@ class TaskController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $task->fill($form)->save();
-        return redirect('/task');
+
+        return redirect()->action(
+            [TaskController::class, 'index'],
+            ['plan_id' => $task['plan_id']]
+        );
     }
 
     public function delete(Request $request)

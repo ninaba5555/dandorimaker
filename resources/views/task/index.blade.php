@@ -16,6 +16,7 @@
     <table>
         <tr>
             <th>ID</th>
+            <th>プランID</th>
             <th>Title</th>
             <th>Message</th>
             <th>Ideal</th>
@@ -25,6 +26,7 @@
         @foreach ($items as $item)
             <tr>
                 <td>{{$item->id}}</td>
+                <td>{{$item->plan_id}}</td>
                 <td>{{$item->title}}</td>
                 <td>{{$item->message}}</td>
                 <td>{{$item->s2m($item->ideal)}}</td>
