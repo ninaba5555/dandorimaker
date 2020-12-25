@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         body {
             font-size: 16pt;
@@ -73,5 +74,6 @@
     <div class="footer">
         @yield('footer')
     </div>
+    <script src="{{ asset('/js/app.js') }}"></script>
 </body>
 </html>

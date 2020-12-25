@@ -81,4 +81,46 @@ class TaskController extends Controller
         Task::find($request->id)->delete();
         return redirect('/task');
     }
+
+    public function up($id)
+    {
+        $task = Task::find($id);
+        $prev = Task::where('sort', '<', $task->sort)->orderBy('sort', 'desc')->first();
+
+        if (! isset($prev)) {
+            return response()->json([
+                'status' => 'err',
+                'msg' => '変更はありませんでした。'
+            ]);
+        }
+
+        $tmp = $task->sort;
+        $task->sort = $prev->sort;
+        $prev->sort = $tmp;
+        $task->save();
+        $prev->save();
+
+        return response()->json($task->sort);
+    }
+
+    public function down($id)
+    {
+        $task = Task::find($id);
+        $next = Task::where('sort', '>', $task->sort)->orderBy('sort', 'asc')->first();
+
+        if (! isset($next)) {
+            return response()->json([
+                'status' => 'err',
+                'msg' => '変更はありませんでした。'
+            ]);
+        }
+
+        $tmp = $task->sort;
+        $task->sort = $next->sort;
+        $next->sort = $tmp;
+        $task->save();
+        $next->save();
+
+        return response()->json($task->sort);
+    }
 }
