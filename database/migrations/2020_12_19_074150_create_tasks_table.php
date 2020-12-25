@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->string('message');
             $table->integer('ideal');
             $table->integer('reality');
+            $table->integer('sort');
             $table->timestamps();
         });
     }
