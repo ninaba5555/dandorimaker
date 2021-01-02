@@ -85,7 +85,8 @@ class TaskController extends Controller
     public function up($id)
     {
         $task = Task::find($id);
-        $prev = Task::where('sort', '<', $task->sort)->orderBy('sort', 'desc')->first();
+        $prev = $task->getPrev();
+        // $prev = Task::where('sort', '<', $task->sort)->orderBy('sort', 'desc')->first();
 
         if (! isset($prev)) {
             return response()->json([
@@ -106,7 +107,7 @@ class TaskController extends Controller
     public function down($id)
     {
         $task = Task::find($id);
-        $next = Task::where('sort', '>', $task->sort)->first();
+        $next = $task->getNext();
 
         if (! isset($next)) {
             return response()->json([

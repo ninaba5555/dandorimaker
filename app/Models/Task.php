@@ -34,7 +34,15 @@ class Task extends Model
     {
         $tasks = Task::planID($this->plan_id);
         $next = $tasks->where('sort', '>', $this->sort)->first();
-
         return $next;
+    }
+
+    public function getPrev()
+    {
+        $tasks = Task::planID($this->plan_id);
+        $prev = $tasks->where('sort', '<', $this->sort)
+            ->orderBy('sort', 'desc')
+            ->first();
+        return $prev;
     }
 }
