@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -59,6 +60,26 @@ class PlanController extends Controller
     public function remove(Request $request)
     {
         $plan = Plan::find($request->id)->delete();
+        return redirect('/plan');
+    }
+
+    public function do(Request $request)
+    {
+        $plan = Plan::find($request->plan_id);
+        $tasks = Task::where('plan_id', $request->plan_id)->orderBy('sort', 'asc')->get();
+        $task = $tasks[0];
+        return view('plan.do', [
+            'plan' => $plan,
+            'task' => $task
+        ]);
+    }
+
+    public function doTask(Request $request)
+    {
+        $task = Task::find($request->task_id);
+        // 仮で1000秒
+        $task->reality = 1000;
+        $task->save();
         return redirect('/plan');
     }
 }

@@ -28,7 +28,8 @@
                 <td>
                     <a href="/plan/edit?id={{$item->id}}">編集</a> ｜
                     <a href="/plan/del?id={{$item->id}}">削除</a> ｜
-                    <a href="/task?plan_id={{$item->id}}">タスク</a>
+                    <a href="/task?plan_id={{$item->id}}">タスク</a> ｜
+                    <a href="/plan/do?plan_id={{$item->id}}">実行</a>
                 </td>
             </tr>
         @endforeach
