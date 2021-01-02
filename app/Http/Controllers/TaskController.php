@@ -39,9 +39,8 @@ class TaskController extends Controller
         // TODO: 未入力カラムの初期値設定方法について調べる
         // TODO: messageカラムは任意入力にしたい
         // TODO: 分秒入力にしたい
-
-        $form['reality'] = 0;
         $form['sort'] = time();
+
         $task->fill($form)->save();
 
         return redirect()->action(

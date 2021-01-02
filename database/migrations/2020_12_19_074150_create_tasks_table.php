@@ -19,7 +19,9 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->string('message');
             $table->integer('ideal');
-            $table->integer('reality');
+            $table->timestamp('start')->nullable();
+            $table->timestamp('end')->nullable();
+            $table->integer('reality')->nullable();
             $table->integer('sort');
             $table->timestamps();
         });

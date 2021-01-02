@@ -30,7 +30,6 @@ class PlanController extends Controller
         // TODO: messageカラムは任意入力にしたい
         // TODO: 分秒入力にしたい
 
-        $form['reality'] = 0;
         $plan->fill($form)->save();
         return redirect('/plan');
     }
@@ -75,30 +74,37 @@ class PlanController extends Controller
 
         return view('plan.do', [
             'plan' => $plan,
-            'task' => $task
+            'task' => $task,
+            'mode' => 'start'
         ]);
     }
 
     public function doTask(Request $request)
     {
         $task = Task::find($request->task_id);
-        // 仮で1000秒
-        $task->reality = 1000;
+        $task->start = date("Y-m-d H:i:s");   ;
         $task->save();
+        $plan = Plan::find($task->plan_id);
 
-        $next = $task->getNext();
+        return view('plan.do', [
+            'plan' => $plan,
+            'task' => $task,
+            'mode' => 'stop'
+        ]);
 
-        if (isset($next)) {
-            return redirect()->action(
-                [PlanController::class, 'do'],
-                [
-                    'plan_id' => $task['plan_id'],
-                    'id' => $next['id']
-                ]
-            );
-        } else {
-            return redirect('/plan');
-        }
+        // $next = $task->getNext();
+
+        // if (isset($next)) {
+        //     return redirect()->action(
+        //         [PlanController::class, 'do'],
+        //         [
+        //             'plan_id' => $task['plan_id'],
+        //             'id' => $next['id']
+        //         ]
+        //     );
+        // } else {
+        //     return redirect('/plan');
+        // }
     }
 
 }

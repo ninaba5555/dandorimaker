@@ -18,7 +18,7 @@ class CreatePlansTable extends Migration
             $table->string('title');
             $table->string('message');
             $table->integer('ideal');
-            $table->integer('reality');
+            $table->integer('reality')->nullable();
             $table->timestamps();
         });
     }
