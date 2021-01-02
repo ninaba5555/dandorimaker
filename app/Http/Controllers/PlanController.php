@@ -66,8 +66,13 @@ class PlanController extends Controller
     public function do(Request $request)
     {
         $plan = Plan::find($request->plan_id);
-        $tasks = Task::where('plan_id', $request->plan_id)->orderBy('sort', 'asc')->get();
-        $task = $tasks[0];
+
+        if (isset($request->id)) {
+            $task = Plan::find($request->id);
+        } else {
+            $task = Task::planID($request->plan_id)->first();
+        }
+
         return view('plan.do', [
             'plan' => $plan,
             'task' => $task
@@ -80,6 +85,20 @@ class PlanController extends Controller
         // 仮で1000秒
         $task->reality = 1000;
         $task->save();
-        return redirect('/plan');
+
+        $next = $task->getNext();
+
+        if (isset($next)) {
+            return redirect()->action(
+                [PlanController::class, 'do'],
+                [
+                    'plan_id' => $task['plan_id'],
+                    'id' => $next['id']
+                ]
+            );
+        } else {
+            return redirect('/plan');
+        }
     }
+
 }

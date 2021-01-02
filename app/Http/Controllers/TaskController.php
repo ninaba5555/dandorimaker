@@ -11,7 +11,7 @@ class TaskController extends Controller
     {
         if (isset($request->plan_id)) {
             // プランに紐づくタスク一覧を表示
-            $items = Task::where('plan_id', $request->plan_id)->get();
+            $items = Task::planID($request->plan_id)->get();
             return view('task.index', ['items' => $items])
                 ->with('plan_id', $request->plan_id);
         } else {
@@ -106,7 +106,7 @@ class TaskController extends Controller
     public function down($id)
     {
         $task = Task::find($id);
-        $next = Task::where('sort', '>', $task->sort)->orderBy('sort', 'asc')->first();
+        $next = Task::where('sort', '>', $task->sort)->first();
 
         if (! isset($next)) {
             return response()->json([

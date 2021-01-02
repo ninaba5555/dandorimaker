@@ -24,4 +24,17 @@ class Task extends Model
         parent::boot();
         static::addGlobalScope(new ScopeTask);
     }
+    
+    public function scopePlanID($query, $planID)
+    {
+        return $query->where('plan_id', $planID);
+    }
+    
+    public function getNext()
+    {
+        $tasks = Task::planID($this->plan_id);
+        $next = $tasks->where('sort', '>', $this->sort)->first();
+
+        return $next;
+    }
 }
