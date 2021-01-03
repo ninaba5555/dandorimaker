@@ -5,6 +5,8 @@
 @section('menubar')
     @parent
     実行ページ
+    <script src="{{ asset('/js/dateformat.js') }}"></script>
+    <script src="{{ asset('/js/timer.js') }}"></script>
 @endsection
 
 @section('content')
@@ -25,36 +27,26 @@
     </table>
     <hr />
     タスク情報
-    @if (count($errors) > 0)
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <form action="/plan/do" method="post">
-        <table>
-            @csrf
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Message</th>
-                <th>Ideal</th>
-            </tr>
-            <tr>
-                <td>
-                    {{$task->id}}
-                    <input type="hidden" name="task_id" value="{{$task->id}}">
-                </td>
-                <td>{{$task->title}}</td>
-                <td>{{$task->message}}</td>
-                <td>{{$task->s2m($task->ideal)}}</td>
-            </tr>
-        </table>
-        <button class="start-btn" type="submit">開始</button>
-    </form>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Message</th>
+            <th>Ideal</th>
+        </tr>
+        <tr>
+            <td>
+                {{$task->id}}
+                <input type="hidden" name="task_id" value="{{$task->id}}">
+            </td>
+            <td>{{$task->title}}</td>
+            <td>{{$task->message}}</td>
+            <td>{{$task->s2m($task->ideal)}}</td>
+        </tr>
+    </table>
+    <button id="timer-btn" class="timer-btn" data-mode="start" onclick="timer({{$task->id}})">
+        開始
+    </button>
 @endsection
 
 @section('footer')

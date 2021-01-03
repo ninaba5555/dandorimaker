@@ -66,8 +66,8 @@ class PlanController extends Controller
     {
         $plan = Plan::find($request->plan_id);
 
-        if (isset($request->id)) {
-            $task = Plan::find($request->id);
+        if (isset($request->task_id)) {
+            $task = Task::find($request->task_id);
         } else {
             $task = Task::planID($request->plan_id)->first();
         }
@@ -79,32 +79,25 @@ class PlanController extends Controller
         ]);
     }
 
-    public function doTask(Request $request)
+    public function time(Request $request)
     {
-        $task = Task::find($request->task_id);
-        $task->start = date("Y-m-d H:i:s");   ;
+        $task = Task::find($request->id);
+        $task->start = $request->start;
+        $task->end = $request->end;
         $task->save();
-        $plan = Plan::find($task->plan_id);
 
-        return view('plan.do', [
-            'plan' => $plan,
-            'task' => $task,
-            'mode' => 'stop'
-        ]);
-
-        // $next = $task->getNext();
-
-        // if (isset($next)) {
-        //     return redirect()->action(
-        //         [PlanController::class, 'do'],
-        //         [
-        //             'plan_id' => $task['plan_id'],
-        //             'id' => $next['id']
-        //         ]
-        //     );
-        // } else {
-        //     return redirect('/plan');
-        // }
+        $next = $task->getNext();
+        if (isset($next)) {
+            return response()->json([
+                'status' => 'next',
+                'plan_id' => $task->plan_id,
+                'task_id' => $next->id,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'end'
+            ]);
+        }
     }
 
 }

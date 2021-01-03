@@ -85,7 +85,6 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
         $prev = $task->getPrev();
-        // $prev = Task::where('sort', '<', $task->sort)->orderBy('sort', 'desc')->first();
 
         if (! isset($prev)) {
             return response()->json([

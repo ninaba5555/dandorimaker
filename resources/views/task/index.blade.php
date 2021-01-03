@@ -7,7 +7,7 @@
     インデックスページ
     @if (isset($plan_id))
         <a href="/task/add?plan_id={{$plan_id}}">プランのタスクを登録する</a>
-        <script src="{{asset('/js/sort.js')}}"></script>
+        <script src="{{ asset('/js/sort.js') }}"></script>
     @else
         <a href="/task/add">タスクを登録する</a>
     @endif

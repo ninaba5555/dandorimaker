@@ -40,4 +40,4 @@ Route::get('plan/del', [PlanController::class, 'delete']);
 Route::post('plan/del', [PlanController::class, 'remove']);
 
 Route::get('plan/do', [PlanController::class, 'do']);
-Route::post('plan/do', [PlanController::class, 'doTask']);
+Route::post('plan/do', [PlanController::class, 'time']);
