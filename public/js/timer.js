@@ -16,14 +16,24 @@ function timer(id, ideal)
         // タイマー
         startU = start.getTime();
         ideal *= 1000;
-        setInterval(() =>{
+        setInterval(() => {
             let seconds = ideal - (Date.now() - startU);
             seconds = Math.floor(seconds / 1000);
 
             // 分秒に変換
-            let minutes = Math.floor((seconds / 60) % 60);
+            let minutes;
+            let text = '残り';
+            if (seconds < 0) {
+                seconds = Math.abs(seconds);
+                text += '-';
+            }
+            minutes = Math.floor((seconds / 60) % 60);
             seconds = seconds % 60;
-            let text = '残り' + minutes + '分' + seconds + '秒';
+            if (minutes > 0) {
+                text += minutes + '分' + seconds + '秒';
+            } else {
+                text += seconds + '秒';
+            }
 
             document.querySelector('#timer').innerHTML = text;
         });
