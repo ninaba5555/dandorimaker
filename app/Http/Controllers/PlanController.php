@@ -26,7 +26,6 @@ class PlanController extends Controller
         $form = $request->all();
         unset($form['_token']);
 
-        // TODO: 未入力カラムの初期値設定方法について調べる
         // TODO: messageカラムは任意入力にしたい
         // TODO: 分秒入力にしたい
 

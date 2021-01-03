@@ -44,7 +44,8 @@
             <td>{{$task->s2m($task->ideal)}}</td>
         </tr>
     </table>
-    <button id="timer-btn" class="timer-btn" data-mode="start" onclick="timer({{$task->id}})">
+    <div id="timer" class="timer"></div>
+    <button id="timer-btn" class="timer-btn" data-mode="start" onclick="timer({{$task->id}}, {{$task->ideal}})">
         開始
     </button>
 @endsection

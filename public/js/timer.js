@@ -1,16 +1,35 @@
-function timer(id)
+function timer(id, ideal)
 {
     const timerBtn = document.querySelector('#timer-btn');
+    let start, end;
 
     var Format = new DateFormat('yyyy-MM-dd HH:mm:ss');
+
     if (timerBtn.dataset.mode == 'start') {
         timerBtn.dataset.mode = 'stop';
-        timerBtn.dataset.start = Format.format(new Date());
         timerBtn.innerText = '終了';
 
+        // 開始時間を保持
+        start = new Date();
+        timerBtn.dataset.start = Format.format(start);
+
+        // タイマー
+        startU = start.getTime();
+        ideal *= 1000;
+        setInterval(() =>{
+            let seconds = ideal - (Date.now() - startU);
+            seconds = Math.floor(seconds / 1000);
+
+            // 分秒に変換
+            let minutes = Math.floor((seconds / 60) % 60);
+            seconds = seconds % 60;
+            let text = '残り' + minutes + '分' + seconds + '秒';
+
+            document.querySelector('#timer').innerHTML = text;
+        });
     } else if (timerBtn.dataset.mode == 'stop') {
-        const start = timerBtn.dataset.start;
-        const end = Format.format(new Date());
+        start = timerBtn.dataset.start;
+        end = Format.format(new Date());
 
         $.ajaxSetup({
             headers: {
@@ -32,6 +51,7 @@ function timer(id)
                 alert(response.msg);
             } else {
                 if (response.status === "next") {
+                    // 次のタスクがある場合
                     window.location.href =
                         '/plan/do?plan_id=' + response.plan_id
                         + '&task_id=' + response.task_id;
