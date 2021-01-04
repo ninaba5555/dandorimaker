@@ -80,9 +80,11 @@ class PlanController extends Controller
 
     public function time(Request $request)
     {
+        // 計測時間を格納
         $task = Task::find($request->id);
         $task->start = $request->start;
         $task->end = $request->end;
+        $task->reality = strtotime($task->end) - strtotime($task->start);
         $task->save();
 
         $next = $task->getNext();
@@ -93,6 +95,9 @@ class PlanController extends Controller
                 'task_id' => $next->id,
             ]);
         } else {
+            // TODO: 計測時間を集計し、プランに格納
+
+
             return response()->json([
                 'status' => 'end'
             ]);
