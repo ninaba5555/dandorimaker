@@ -96,7 +96,7 @@ class PlanController extends Controller
             ]);
         } else {
             // TODO: 計測時間を集計し、プランに格納
-
+            Plan::aggregate($task->plan_id);
 
             return response()->json([
                 'status' => 'end'

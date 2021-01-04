@@ -25,6 +25,11 @@ class Task extends Model
         static::addGlobalScope(new ScopeTask);
     }
     
+    public function plan()
+    {
+        return $this->belongsTo('App\Models\Plan');
+    }
+
     public function scopePlanID($query, $planID)
     {
         return $query->where('plan_id', $planID);
