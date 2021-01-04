@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\PlanController;
 
@@ -19,6 +20,8 @@ use App\Http\Controllers\PlanController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('home', [HomeController::class, 'index'])->name('home');
 
 Route::get('task', [TaskController::class, 'index']);
 Route::get('task/add', [TaskController::class, 'add']);
@@ -42,5 +45,3 @@ Route::post('plan/del', [PlanController::class, 'remove']);
 Route::get('plan/do', [PlanController::class, 'do']);
 Route::post('plan/do', [PlanController::class, 'time']);
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
