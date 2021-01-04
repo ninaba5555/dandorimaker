@@ -31,4 +31,14 @@ class Crystal extends Model
         $crystal->number  = $number;
         $crystal->save();
     }
+
+    public static function number()
+    {
+        $crystals = Crystal::get();
+        $number = 0;
+        foreach ($crystals as $crystal) {
+            $number += $crystal->number;
+        }
+        return '努力の結晶：' . $number;
+    }
 }
