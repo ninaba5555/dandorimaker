@@ -41,3 +41,6 @@ Route::post('plan/del', [PlanController::class, 'remove']);
 
 Route::get('plan/do', [PlanController::class, 'do']);
 Route::post('plan/do', [PlanController::class, 'time']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
