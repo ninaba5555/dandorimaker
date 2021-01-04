@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\TimeTrait;
+use App\Scopes\ScopePlan;
 
 class Plan extends Model
 {
@@ -17,6 +18,12 @@ class Plan extends Model
         'title' => "required",
         'ideal' => "integer",
     );
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(new ScopePlan);
+    }
 
     public function tasks()
     {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Plan;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class PlanController extends Controller
 
         // TODO: messageカラムは任意入力にしたい
         // TODO: 分秒入力にしたい
-
+        $form['user_id'] = Auth::user()->id;
         $plan->fill($form)->save();
         return redirect('/plan');
     }
