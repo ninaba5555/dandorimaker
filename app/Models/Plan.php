@@ -45,6 +45,7 @@ class Plan extends Model
         // 格納
         $plan = Plan::find($planID);
         $plan->reality = $reality;
+        $plan->crystalize = true;
         $plan->save();
 
         return;
