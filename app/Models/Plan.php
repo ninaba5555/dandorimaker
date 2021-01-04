@@ -52,7 +52,7 @@ class Plan extends Model
 
         // 格納
         $plan->reality = $reality;
-        $plan->crystalize = true;
+        $plan->crystallize = true;
         $plan->save();
 
         return;

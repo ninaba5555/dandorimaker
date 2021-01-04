@@ -35,7 +35,7 @@ class PlanController extends Controller
         // TODO: messageカラムは任意入力にしたい
         // TODO: 分秒入力にしたい
         $form['user_id'] = Auth::user()->id;
-        $form['crystalize'] = false;
+        $form['crystallize'] = false;
         $plan->fill($form)->save();
         return redirect('/plan');
     }

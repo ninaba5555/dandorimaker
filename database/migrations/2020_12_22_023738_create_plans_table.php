@@ -20,7 +20,7 @@ class CreatePlansTable extends Migration
             $table->string('message');
             $table->integer('ideal');
             $table->integer('reality')->nullable();
-            $table->boolean('crystalize');
+            $table->boolean('crystallize');
             $table->timestamps();
         });
     }
