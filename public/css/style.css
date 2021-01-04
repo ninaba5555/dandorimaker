@@ -1,3 +1,58 @@
+@charset "UTF-8";
+
+html {
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background: #E3EDF7;
+    color: #485859;
+}
+
+
+/* 見出し
+----------------------------------------------- */
+
+.heading {
+    margin: 40px 0 0;
+    font-size: 4.0rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* 努力の結晶
+----------------------------------------------- */
+
+.crystal {
+    display: flex;
+    margin: 32px 32px 0;
+    padding: 20px 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    background: #E3EDF7;
+    box-shadow:  8px 8px 16px #d1dae3,
+                 -8px -8px 16px #f5ffff;
+}
+
+.crystal__title {
+    color: #778899;
+}
+
+.crystal__number {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* タイマー
+----------------------------------------------- */
+
 .timer {
 
 }

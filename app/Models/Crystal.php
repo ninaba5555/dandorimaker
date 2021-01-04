@@ -39,6 +39,6 @@ class Crystal extends Model
         foreach ($crystals as $crystal) {
             $number += $crystal->number;
         }
-        return '努力の結晶：' . $number;
+        return $number;
     }
 }
