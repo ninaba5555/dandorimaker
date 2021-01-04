@@ -11,7 +11,10 @@ trait TimeTrait
     {
         $minutes = floor(($seconds / 60) % 60);
         $seconds = $seconds % 60;
-
-        return $minutes . '分' . $seconds . '秒';
+        if ($minutes > 0) {
+            return $minutes . '分' . $seconds . '秒';
+        } else {
+            return $seconds . '秒';
+        }
     }
 }

@@ -11,7 +11,7 @@ html {
 body {
     font-size: 1.6rem;
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    background: #E3EDF7;
+    background: #e3edf7;
     color: #485859;
 }
 
@@ -19,36 +19,122 @@ body {
 /* 見出し
 ----------------------------------------------- */
 
-.heading {
-    margin: 40px 0 0;
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 16px 0;
+}
+
+.header__ttl {
     font-size: 4.0rem;
-    text-align: center;
     font-weight: bold;
 }
 
+.header__btn {
+    font-size: 2.4rem;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    background: #e3edf7;
+    box-shadow: 8px 8px 16px #d1dae3, -8px -8px 16px #f5ffff;
+}
 
-/* 努力の結晶
+.header__btn i {
+    line-height: 46px;
+}
+
+
+/* セクション
 ----------------------------------------------- */
 
-.crystal {
-    display: flex;
-    margin: 32px 32px 0;
-    padding: 20px 24px;
+.section__ttl {
+    margin: 24px 16px 0;
     font-weight: bold;
+}
+
+
+/* パネル
+----------------------------------------------- */
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 16px 0;
+    padding: 20px 24px;
     border-radius: 8px;
-    background: #E3EDF7;
-    box-shadow:  8px 8px 16px #d1dae3,
-                 -8px -8px 16px #f5ffff;
+    background: #e3edf7;
+    box-shadow: 8px 8px 16px #d1dae3, -8px -8px 16px #f5ffff;
 }
 
-.crystal__title {
+.panel.panel--crystal {
+    flex-direction: row;
+    margin: 32px 16px 0;
+}
+
+.panel__ttl {
     color: #778899;
+    font-weight: bold;
 }
 
-.crystal__number {
+.panel__message {
+    margin: 8px 0 0;
+    font-size: 1.2rem;
+}
+
+.panel__action {
+    margin: 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.panel__action__btn {
+    font-size: 2.4rem;
+    width: 46px;
+    height: 46px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    background: #e3edf7;
+    box-shadow: 8px 8px 16px #d1dae3, -8px -8px 16px #f5ffff;
+}
+
+.panel__action__btn__label {
+    margin: 4px 0 0;
+    font-size: 1.1rem;
+}
+
+.panel__action__btn i {
+    line-height: 46px;
+}
+
+.panel__info {
+    margin: 32px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: #778899;
+    font-size: 1.1rem;
+}
+
+.panel__num {
     flex-grow: 1;
     text-align: center;
+    font-weight: bold;
 }
+
+
+/* フッター
+----------------------------------------------- */
+
+.footer {
+    margin: 32px 0 0;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
 
 /* タイマー
 ----------------------------------------------- */
