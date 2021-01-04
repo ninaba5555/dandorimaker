@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use App\Traits\TimeTrait;
 use App\Scopes\ScopePlan;
+use App\Models\Crystal;
 
 class Plan extends Model
 {
@@ -42,8 +44,13 @@ class Plan extends Model
             $reality += $task->reality;
         }
 
-        // 格納
+        // 努力の結晶を付与
         $plan = Plan::find($planID);
+        if (! $plan->crystallize) {
+            Crystal::give(Auth::user()->id, 'プラン実行報酬', 25);
+        }
+
+        // 格納
         $plan->reality = $reality;
         $plan->crystalize = true;
         $plan->save();
