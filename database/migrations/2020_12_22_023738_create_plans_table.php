@@ -17,7 +17,7 @@ class CreatePlansTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('title');
-            $table->string('message');
+            $table->string('message')->nullable();
             $table->integer('ideal');
             $table->integer('reality')->nullable();
             $table->boolean('crystallize');

@@ -42,7 +42,6 @@ class TaskController extends Controller
         $form = $request->all();
         unset($form['_token']);
 
-        // TODO: messageカラムは任意入力にしたい
         // TODO: 分秒入力にしたい
         $form['sort'] = time();
         $form['user_id'] = Auth::user()->id;

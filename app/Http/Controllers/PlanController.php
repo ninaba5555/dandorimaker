@@ -32,7 +32,6 @@ class PlanController extends Controller
         $form = $request->all();
         unset($form['_token']);
 
-        // TODO: messageカラムは任意入力にしたい
         // TODO: 分秒入力にしたい
         $form['user_id'] = Auth::user()->id;
         $form['crystallize'] = false;
@@ -102,7 +101,7 @@ class PlanController extends Controller
                 'task_id' => $next->id,
             ]);
         } else {
-            // TODO: 計測時間を集計し、プランに格納
+            // 計測時間を集計し、プランに格納
             Plan::aggregate($task->plan_id);
 
             return response()->json([

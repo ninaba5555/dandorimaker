@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->integer('user_id');
             $table->integer('plan_id');
             $table->string('title');
-            $table->string('message');
+            $table->string('message')->nullable();
             $table->integer('ideal');
             $table->timestamp('start')->nullable();
             $table->timestamp('end')->nullable();
