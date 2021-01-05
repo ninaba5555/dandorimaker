@@ -125,6 +125,10 @@ body {
     color: #cdd0da;
 }
 
+.panel__info.panel__info--del {
+    margin: 8px 0 0;
+}
+
 .panel__num {
     flex-grow: 1;
     text-align: center;
@@ -177,6 +181,11 @@ body {
     box-shadow: 4px 4px 8px #c9ccd7, -4px -4px 8px #fff;
     color: #727c93;
     font-weight: bold;
+}
+
+.form__btn.form__btn--del {
+    background-image: linear-gradient(to right, #fea563 0%, #fd9238  100%);
+    color: #edeff3;
 }
 
 
