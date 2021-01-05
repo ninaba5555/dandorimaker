@@ -46,6 +46,11 @@ body {
     line-height: 46px;
 }
 
+.header__btnSpacer {
+    width: 46px;
+    height: 46px;
+}
+
 
 /* セクション
 ----------------------------------------------- */
@@ -62,7 +67,7 @@ body {
 .panel {
     display: flex;
     flex-direction: column;
-    margin: 8px 16px 0;
+    margin: 16px 16px 0;
     padding: 20px 24px;
     border-radius: 8px;
     background: #e3edf7;
@@ -123,6 +128,47 @@ body {
     flex-grow: 1;
     text-align: center;
     font-weight: bold;
+}
+
+
+/* フォーム
+----------------------------------------------- */
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    display: flex;
+    align-items: center;
+}
+
+.form label input {
+    flex-grow: 1;
+    padding: 16px;
+    border-radius: 8px;
+    background: #e3edf7;
+    box-shadow: inset 8px 8px 16px #d1dae3, inset -8px -8px 16px #f5ffff;
+}
+
+.form label + label {
+    margin: 16px 0 0; 
+}
+
+.form__label__unit {
+    margin: 0 0 0 8px;
+}
+
+.form__btn {
+    width: 64%;
+    margin: 24px auto 0;
+    padding: 20px 24px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 24px;
+    background: #e3edf7;
+    box-shadow: 8px 8px 16px #d1dae3, -8px -8px 16px #f5ffff;
 }
 
 

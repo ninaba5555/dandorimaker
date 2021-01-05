@@ -10,5 +10,6 @@ class ScopePlan implements Scope
 {
     public function apply(Builder $builder, Model $model) {
         $builder->where('user_id', Auth::user()->id);
+        $builder->orderBy('created_at', 'desc');
     }
 }
