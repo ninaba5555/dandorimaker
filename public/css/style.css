@@ -11,8 +11,8 @@ html {
 body {
     font-size: 1.6rem;
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    background: #e3edf7;
-    color: #485859;
+    background: #edeff3;
+    color: #838ca0;
 }
 
 
@@ -27,7 +27,6 @@ body {
 
 .header__ttl {
     font-size: 4.0rem;
-    font-weight: bold;
 }
 
 .header__btn {
@@ -35,11 +34,12 @@ body {
     width: 46px;
     height: 46px;
     line-height: 46px;
-    font-weight: bold;
     text-align: center;
     border-radius: 50%;
-    background: #e3edf7;
-    box-shadow: 8px 8px 16px #d1dae3, -8px -8px 16px #f5ffff;
+    background: #edeff3;
+    box-shadow: 4px 4px 8px #c9ccd7, -4px -4px 8px #fff;
+    color: #727c93;
+    font-weight: bold;
 }
 
 .header__btn i {
@@ -70,8 +70,8 @@ body {
     margin: 16px 16px 0;
     padding: 20px 24px;
     border-radius: 8px;
-    background: #e3edf7;
-    box-shadow: 8px 8px 16px #d1dae3, -8px -8px 16px #f5ffff;
+    background: #edeff3;
+    box-shadow: 4px 4px 8px #c9ccd7, -4px -4px 8px #fff;
 }
 
 .panel.panel--crystal {
@@ -80,13 +80,13 @@ body {
 }
 
 .panel__ttl {
-    color: #778899;
     font-weight: bold;
 }
 
 .panel__message {
     margin: 8px 0 0;
     font-size: 1.2rem;
+    color: #838ca0;
 }
 
 .panel__action {
@@ -99,15 +99,16 @@ body {
     font-size: 2.4rem;
     width: 46px;
     height: 46px;
-    font-weight: bold;
     text-align: center;
     border-radius: 50%;
-    background: #e3edf7;
-    box-shadow: 8px 8px 16px #d1dae3, -8px -8px 16px #f5ffff;
+    background: #edeff3;
+    box-shadow: 4px 4px 8px #c9ccd7, -4px -4px 8px #fff;
+    color: #727c93;
+    font-weight: bold;
 }
 
 .panel__action__btn__label {
-    margin: 4px 0 0;
+    margin: 8px 0 0;
     font-size: 1.1rem;
 }
 
@@ -120,8 +121,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    color: #778899;
     font-size: 1.1rem;
+    color: #cdd0da;
 }
 
 .panel__num {
@@ -148,8 +149,14 @@ body {
     flex-grow: 1;
     padding: 16px;
     border-radius: 8px;
-    background: #e3edf7;
-    box-shadow: inset 8px 8px 16px #d1dae3, inset -8px -8px 16px #f5ffff;
+    background: #edeff3;
+    box-shadow: inset 4px 4px 8px #c9ccd7, inset -4px -4px 8px #fff;
+}
+
+.form label input::placeholder {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #cdd0da;
 }
 
 .form label + label {
@@ -164,11 +171,12 @@ body {
     width: 64%;
     margin: 24px auto 0;
     padding: 20px 24px;
-    font-weight: bold;
     text-align: center;
     border-radius: 24px;
-    background: #e3edf7;
-    box-shadow: 8px 8px 16px #d1dae3, -8px -8px 16px #f5ffff;
+    background: #edeff3;
+    box-shadow: 4px 4px 8px #c9ccd7, -4px -4px 8px #fff;
+    color: #727c93;
+    font-weight: bold;
 }
 
 
