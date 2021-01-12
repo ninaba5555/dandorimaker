@@ -89,6 +89,18 @@ body {
     color: #838ca0;
 }
 
+.panel__next {
+    position: relative;
+    margin: 8px 0 0;
+    font-size: 1.2rem;
+    color: #fd9238;
+}
+
+.panel__next::before {
+    font-family: FontAwesome;
+    content: "\f133";
+}
+
 .panel__action {
     margin: 16px 0 0;
     display: flex;

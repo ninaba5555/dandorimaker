@@ -20,8 +20,14 @@
         @foreach ($items as $item)
         <div class="panel">
             <div class="panel__ttl">{{$item->title}}</div>
-            <div class="panel__message">{{$item->message}}</div>
 
+            @if (! $item->hasTasks())
+                <div class="panel__next">
+                    タスクを登録しましょう
+                </div>
+            @endif
+
+            <div class="panel__message">{{$item->message}}</div>
             <div class="panel__action">
                 <a href="/plan/edit?id={{$item->id}}" class="panel__action__btn">
                     <i class="fa fa-pencil"></i>
@@ -35,10 +41,12 @@
                     <i class="fa fa-calendar-check-o"></i>
                     <div class="panel__action__btn__label">タスク</div>
                 </a>
-                <a href="/plan/do?plan_id={{$item->id}}" class="panel__action__btn">
-                    <i class="fa fa-caret-square-o-right"></i>
-                    <div class="panel__action__btn__label">実行</div>
-                </a>
+                @if ($item->hasTasks())
+                    <a href="/plan/do?plan_id={{$item->id}}" class="panel__action__btn">
+                        <i class="fa fa-caret-square-o-right"></i>
+                        <div class="panel__action__btn__label">実行</div>
+                    </a>
+                @endif
             </div><!--panel__action END-->
 
             <div class="panel__info">

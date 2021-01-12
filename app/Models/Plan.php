@@ -57,4 +57,13 @@ class Plan extends Model
 
         return;
     }
+
+    /**
+     * プランに紐づくタスクが登録されているかどうか
+     */
+    public function hasTasks()
+    {
+        $tasks = Task::planID($this->id)->first();
+        return isset($tasks);
+    }
 }
