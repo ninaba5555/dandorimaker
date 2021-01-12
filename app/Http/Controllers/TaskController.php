@@ -56,7 +56,11 @@ class TaskController extends Controller
     public function edit(Request $request)
     {
         $task = Task::find($request->id);
-        return view('task.edit', ['form' => $task]);
+        if (isset($request->plan_id)) {
+            return view('task.edit', ['form' => $task])->with('plan_id', $request->plan_id);
+        } else {
+            return view('task.edit', ['form' => $task]);
+        }
     }
 
     public function update(Request $request)
@@ -76,13 +80,22 @@ class TaskController extends Controller
     public function delete(Request $request)
     {
         $task = Task::find($request->id);
-        return view('task.del', ['form' => $task]);
+        if (isset($request->plan_id)) {
+            return view('task.del', ['form' => $task])->with('plan_id', $request->plan_id);
+        } else {
+            return view('task.del', ['form' => $task]);
+        }
     }
 
     public function remove(Request $request)
     {
-        Task::find($request->id)->delete();
-        return redirect('/task');
+        $task = Task::find($request->id);
+        $planID = $task->plan_id;
+        $task->delete();
+        return redirect()->action(
+            [TaskController::class, 'index'],
+            ['plan_id' => $planID]
+        );
     }
 
     public function up($id)

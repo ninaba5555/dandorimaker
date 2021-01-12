@@ -30,11 +30,11 @@
             <div class="panel__message">{{$item->message}}</div>
 
             <div class="panel__action">
-                <a href="/task/edit?id={{$item->id}}" class="panel__action__btn">
+                <a href="/task/edit?id={{$item->id}}&plan_id={{$plan_id}}" class="panel__action__btn">
                     <i class="fa fa-pencil"></i>
                     <div class="panel__action__btn__label">編集</div>
                 </a>
-                <a href="/task/del?id={{$item->id}}" class="panel__action__btn">
+                <a href="/task/del?id={{$item->id}}&plan_id={{$plan_id}}" class="panel__action__btn">
                     <i class="fa fa-trash"></i>
                     <div class="panel__action__btn__label">削除</div>
                 </a>
@@ -52,7 +52,6 @@
             </div><!--panel__action END-->
 
             <div class="panel__info">
-                <div class="panel__info__planID">{{$item->plan_id}}</div>
                 <div class="panel__info__ideal">予想 {{$item->s2m($item->ideal)}}</div> ｜
                 @if ($item->reality == 0)
                     <div class="panel__info__reality">未実行</div>
