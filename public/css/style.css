@@ -219,5 +219,13 @@ body {
 }
 
 .timer-btn {
-    margin: 8px 0 0 0;
+    width: 64%;
+    margin: 24px auto 0;
+    padding: 20px 24px;
+    text-align: center;
+    border-radius: 24px;
+    background: #edeff3;
+    box-shadow: 4px 4px 8px #c9ccd7, -4px -4px 8px #fff;
+    color: #727c93;
+    font-weight: bold;
 }
