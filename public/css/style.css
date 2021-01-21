@@ -184,6 +184,10 @@ body {
     cursor: pointer;
 }
 
+.tasks__item.tasks__item--chosen {
+    background-color: #fd9238;
+}
+
 
 /* フォーム
 ----------------------------------------------- */

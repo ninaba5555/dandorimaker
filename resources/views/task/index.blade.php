@@ -25,50 +25,54 @@
 @section('content')
     <div class="section">
         <h2 class="section__ttl">一覧</h2>
-        @foreach ($items as $item)
-        <div class="panel panel--2columns">
-            <div class="panel__left">
-                <div class="dragHandle">
-                    <i class="fa fa-bars"></i>
-                </div>
-            </div><!--panel__left END-->
 
-            <div class="panel__right">
-                <div class="panel__ttl">{{$item->title}}</div>
-                <div class="panel__message">{{$item->message}}</div>
+        <ul id="tasks">
+            @foreach ($items as $item)
+            <li data-id="{{$item->id}}" class="panel panel--2columns tasks__item">
+                <div class="panel__left">
+                    <div class="handle">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                </div><!--panel__left END-->
 
-                <div class="panel__action">
-                    <a href="/task/edit?id={{$item->id}}&plan_id={{$plan_id}}" class="panel__action__btn">
-                        <i class="fa fa-pencil"></i>
-                        <div class="panel__action__btn__label">編集</div>
-                    </a>
-                    <a href="/task/del?id={{$item->id}}&plan_id={{$plan_id}}" class="panel__action__btn">
-                        <i class="fa fa-trash"></i>
-                        <div class="panel__action__btn__label">削除</div>
-                    </a>
-                    @if (isset($plan_id))
-                        <a href="javascript:up({{$item->id}});" class="panel__action__btn">
-                            <i class="fa fa-arrow-up"></i>
-                            <div class="panel__action__btn__label">上へ</div>
+                <div class="panel__right">
+                    <div class="panel__ttl">{{$item->title}}</div>
+                    <div class="panel__message">{{$item->message}}</div>
+
+                    <div class="panel__action">
+                        <a href="/task/edit?id={{$item->id}}&plan_id={{$plan_id}}" class="panel__action__btn">
+                            <i class="fa fa-pencil"></i>
+                            <div class="panel__action__btn__label">編集</div>
                         </a>
-                        <a href="javascript:down({{$item->id}});" class="panel__action__btn">
-                            <i class="fa fa-arrow-down"></i>
-                            <div class="panel__action__btn__label">下へ</div>
+                        <a href="/task/del?id={{$item->id}}&plan_id={{$plan_id}}" class="panel__action__btn">
+                            <i class="fa fa-trash"></i>
+                            <div class="panel__action__btn__label">削除</div>
                         </a>
-                    @endif
-                </div><!--panel__action END-->
+                        @if (isset($plan_id))
+                            <a href="javascript:up({{$item->id}});" class="panel__action__btn">
+                                <i class="fa fa-arrow-up"></i>
+                                <div class="panel__action__btn__label">上へ</div>
+                            </a>
+                            <a href="javascript:down({{$item->id}});" class="panel__action__btn">
+                                <i class="fa fa-arrow-down"></i>
+                                <div class="panel__action__btn__label">下へ</div>
+                            </a>
+                        @endif
+                    </div><!--panel__action END-->
 
-                <div class="panel__info">
-                    <div class="panel__info__ideal">予想 {{$item->s2m($item->ideal)}}</div> ｜
-                    @if ($item->reality == 0)
-                        <div class="panel__info__reality">未実行</div>
-                    @else
-                        <div class="panel__info__reality">実際 {{$item->s2m($item->reality)}}</div>
-                    @endif
-                </div><!--panel__info END-->
-            </div><!--panel__right END-->
-        </div><!--panel END-->
-        @endforeach
+                    <div class="panel__info">
+                        <div class="panel__info__ideal">予想 {{$item->s2m($item->ideal)}}</div> ｜
+                        @if ($item->reality == 0)
+                            <div class="panel__info__reality">未実行</div>
+                        @else
+                            <div class="panel__info__reality">実際 {{$item->s2m($item->reality)}}</div>
+                        @endif
+                    </div><!--panel__info END-->
+                </div><!--panel__right END-->
+            </li><!--panel END-->
+            @endforeach
+        </ul><!--tasks END-->
+
     </div><!--section END-->
 @endsection
 

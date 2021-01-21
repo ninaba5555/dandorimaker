@@ -139,4 +139,18 @@ class TaskController extends Controller
 
         return response()->json($task->sort);
     }
+
+    public function sort(Request $request)
+    {
+        $idStr = $request->id;
+        $ids = explode('/', $idStr);
+
+        for ($i = 0; $i < count($ids); $i++) {
+            $task = Task::find($ids[$i]);
+            $task->sort = $i;
+            $task->save();
+        }
+
+        return response()->json();
+    }
 }

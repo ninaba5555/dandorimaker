@@ -33,6 +33,7 @@ Route::post('task/del', [TaskController::class, 'remove']);
 
 Route::post('task/up/{id}', [TaskController::class, 'up']);
 Route::post('task/down/{id}', [TaskController::class, 'down']);
+Route::post('task/sort', [TaskController::class, 'sort']);
 
 Route::get('plan', [PlanController::class, 'index']);
 Route::get('plan/add', [PlanController::class, 'add']);
