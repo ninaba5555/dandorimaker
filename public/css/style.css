@@ -68,7 +68,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 16px 16px 0;
-    padding: 20px 24px;
+    padding: 20px 16px;
     border-radius: 8px;
     background: #edeff3;
     box-shadow: 4px 4px 8px #c9ccd7, -4px -4px 8px #fff;
@@ -77,6 +77,7 @@ body {
 .panel.panel--crystal {
     flex-direction: row;
     margin: 32px 16px 0;
+    padding: 20px 24px;
 }
 
 .panel__ttl {
@@ -119,13 +120,13 @@ body {
     font-weight: bold;
 }
 
+.panel__action__btn i {
+    line-height: 46px;
+}
+
 .panel__action__btn__label {
     margin: 8px 0 0;
     font-size: 1.1rem;
-}
-
-.panel__action__btn i {
-    line-height: 46px;
 }
 
 .panel__info {
@@ -145,6 +146,42 @@ body {
     flex-grow: 1;
     text-align: center;
     font-weight: bold;
+}
+
+
+/* 2カラム用
+----------------------------------------------- */
+
+.panel.panel--2columns {
+    flex-direction: row;
+    align-items: center;
+}
+
+.panel__left,
+.panel__right {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel__right {
+    margin: 0 0 0 16px;
+    flex-grow: 1;
+}
+
+
+/* ドラッグ
+----------------------------------------------- */
+
+.dragHandle {
+    font-size: 2.4rem;
+    text-align: center;
+    border-radius: 50%;
+    color: #727c93;
+    font-weight: bold;
+}
+
+.dragHandle:hover {
+    cursor: pointer;
 }
 
 
