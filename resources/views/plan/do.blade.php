@@ -10,6 +10,7 @@
 
 @section('header__btn--after')
     <div class="header__btnSpacer"></div>
+    <script src="{{ asset('/js/common.js') }}"></script>
     <script src="{{ asset('/js/dateformat.js') }}"></script>
     <script src="{{ asset('/js/timer.js') }}"></script>
 @endsection

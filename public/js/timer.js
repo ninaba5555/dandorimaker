@@ -40,38 +40,26 @@ function timer(id, ideal)
     } else if (timerBtn.dataset.mode == 'stop') {
         start = timerBtn.dataset.start;
         end = Format.format(new Date());
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type: "POST",
-            url: "/plan/do",
-            data: {
-                id: id,
-                start: start,
-                end: end
-            },
-            cache: false,
-            dataType: 'json'
-        }).done(function (response, textStatus, jqXHR) {
-            if (response.status === "err") {
-                alert(response.msg);
-            } else {
-                if (response.status === "next") {
-                    // 次のタスクがある場合
-                    window.location.href =
-                        '/plan/do?plan_id=' + response.plan_id
-                        + '&task_id=' + response.task_id;
-                } else {
-                    window.location.href = '/plan';
-                }
-            }
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            alert("サーバー内でエラーがあったか、サーバーから応答がありませんでした。");
-        });
+        ajaxCall("/plan/do", {
+            id: id,
+            start: start,
+            end: end
+        }, timerCallBack);
     }
+}
 
+function timerCallBack(response)
+{
+    if (response.status === "err") {
+        alert(response.msg);
+    } else {
+        if (response.status === "next") {
+            // 次のタスクがある場合
+            window.location.href =
+                '/plan/do?plan_id=' + response.plan_id
+                + '&task_id=' + response.task_id;
+        } else {
+            window.location.href = '/plan';
+        }
+    }
 }

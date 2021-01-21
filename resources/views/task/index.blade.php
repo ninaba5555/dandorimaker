@@ -13,6 +13,7 @@
         <a href="/task/add?plan_id={{$plan_id}}" class="header__btn">
             <i class="fa fa-plus"></i>
         </a><!--header__btn END-->
+        <script src="{{ asset('/js/common.js') }}"></script>
         <script src="{{ asset('/js/sort.js') }}"></script>
     @else
         <a href="/task/add" class="header__btn">
