@@ -5,9 +5,6 @@
  */
 
 require('./bootstrap');
-
-require('sortablejs');
-
 // window.Vue = require('vue');
 
 /**
