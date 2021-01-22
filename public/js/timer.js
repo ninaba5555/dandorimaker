@@ -1,9 +1,7 @@
-function timer(id, ideal)
-{
+const timer = (id, ideal) => {
+    const Format = new DateFormat('yyyy-MM-dd HH:mm:ss');
     const timerBtn = document.querySelector('#timer-btn');
     let start, end;
-
-    var Format = new DateFormat('yyyy-MM-dd HH:mm:ss');
 
     if (timerBtn.dataset.mode == 'start') {
         timerBtn.dataset.mode = 'stop';
@@ -48,8 +46,7 @@ function timer(id, ideal)
     }
 }
 
-function timerCallBack(response)
-{
+const timerCallBack = (response) => {
     if (response.status === "err") {
         alert(response.msg);
     } else {

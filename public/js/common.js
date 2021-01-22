@@ -1,4 +1,4 @@
-function ajaxCall(url, data = {}, doneCallBack = defaultCallBack)
+const ajaxCall = (url, data = {}, doneCallBack = defaultCallBack) =>
 {
     $.ajaxSetup({
         headers: {
@@ -11,14 +11,14 @@ function ajaxCall(url, data = {}, doneCallBack = defaultCallBack)
         data: data,
         cache: false,
         dataType: 'json'
-    }).done(function (response, textStatus, jqXHR) {
+    }).done((response, textStatus, jqXHR) => {
         doneCallBack(response);
-    }).fail(function (jqXHR, textStatus, errorThrown) {
+    }).fail((jqXHR, textStatus, errorThrown) => {
         alert("サーバー内でエラーがあったか、サーバーから応答がありませんでした。");
     });
 }
 
-function defaultCallBack(response)
+const defaultCallBack = (response) =>
 {
     if (response.status === "err") {
         alert(response.msg);

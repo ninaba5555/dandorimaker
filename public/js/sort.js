@@ -1,30 +1,15 @@
-function up(id)
-{
+const up = (id) => {
     ajaxCall("/task/up/" + id);
 }
 
-function down(id)
-{
+const down = (id) => {
     ajaxCall("/task/down/" + id);
 }
 
-window.onload = function() {
-    var el = document.getElementById('tasks');
-    var sortable = Sortable.create(el, {
-        handle: '.handle',
-        chosenClass: 'tasks__item--chosen',
-        animation: 100,
-        onEnd: function (ev) {
-            submitSortData();
-        }
-    });
-}
-
-function submitSortData()
-{
-    var tasks = document.getElementById('tasks').querySelectorAll('[data-id]');
-    var ids = '';
-    for (var i = 0; i < tasks.length; i++) {
+const submitSortData = () => {
+    const tasks = document.getElementById('tasks').querySelectorAll('[data-id]');
+    let ids = '';
+    for (let i = 0; i < tasks.length; i++) {
         ids += tasks[i].dataset.id;
         if (i != tasks.length - 1) {
             ids += '/';
@@ -32,5 +17,17 @@ function submitSortData()
     }
     ajaxCall("/task/sort", {
         id: ids
+    });
+}
+
+window.onload = () => {
+    let el = document.getElementById('tasks');
+    Sortable.create(el, {
+        handle: '.handle',
+        chosenClass: 'tasks__item--chosen',
+        animation: 100,
+        onEnd: (ev) => {
+            submitSortData();
+        }
     });
 }
