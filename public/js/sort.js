@@ -7,14 +7,19 @@ const down = (id) => {
 }
 
 const submitSortData = () => {
-    const tasks = document.getElementById('tasks').querySelectorAll('[data-id]');
+    const $tasks = document.getElementById('tasks').querySelectorAll('[data-id]');
+    const tasksLength = $tasks.length;
+    let tasksIndex = 0;
     let ids = '';
-    for (let i = 0; i < tasks.length; i++) {
-        ids += tasks[i].dataset.id;
-        if (i != tasks.length - 1) {
+
+    while (tasksIndex < tasksLength) {
+        ids += $tasks[tasksIndex].dataset.id;
+        if (tasksIndex != tasksLength - 1) {
             ids += '/';
         }
+        tasksIndex++;
     }
+
     ajaxCall("/task/sort", {
         id: ids
     });

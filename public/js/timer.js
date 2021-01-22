@@ -1,15 +1,16 @@
 const timer = (id, ideal) => {
     const Format = new DateFormat('yyyy-MM-dd HH:mm:ss');
-    const timerBtn = document.querySelector('#timer-btn');
+    const $timer = document.querySelector('#timer');
+    const $timerBtn = document.querySelector('#timer-btn');
     let start, end;
 
-    if (timerBtn.dataset.mode == 'start') {
-        timerBtn.dataset.mode = 'stop';
-        timerBtn.innerText = '終了';
+    if ($timerBtn.dataset.mode === 'start') {
+        $timerBtn.dataset.mode = 'stop';
+        $timerBtn.innerText = '終了';
 
         // 開始時間を保持
         start = new Date();
-        timerBtn.dataset.start = Format.format(start);
+        $timerBtn.dataset.start = Format.format(start);
 
         // タイマー
         startU = start.getTime();
@@ -17,26 +18,10 @@ const timer = (id, ideal) => {
         setInterval(() => {
             let seconds = ideal - (Date.now() - startU);
             seconds = Math.floor(seconds / 1000);
-
-            // 分秒に変換
-            let minutes;
-            let text = '残り';
-            if (seconds < 0) {
-                seconds = Math.abs(seconds);
-                text += '-';
-            }
-            minutes = Math.floor((seconds / 60) % 60);
-            seconds = seconds % 60;
-            if (minutes > 0) {
-                text += minutes + '分' + seconds + '秒';
-            } else {
-                text += seconds + '秒';
-            }
-
-            document.querySelector('#timer').innerHTML = text;
+            $timer.innerHTML = s2m(seconds);
         });
-    } else if (timerBtn.dataset.mode == 'stop') {
-        start = timerBtn.dataset.start;
+    } else if ($timerBtn.dataset.mode === 'stop') {
+        start = $timerBtn.dataset.start;
         end = Format.format(new Date());
         ajaxCall("/plan/do", {
             id: id,
@@ -46,6 +31,27 @@ const timer = (id, ideal) => {
     }
 }
 
+// 分秒に変換
+const s2m = (seconds) => {
+    let minutes;
+    let text = '残り';
+
+    if (seconds < 0) {
+        seconds = Math.abs(seconds);
+        text += '-';
+    }
+    minutes = Math.floor((seconds / 60) % 60);
+    seconds = seconds % 60;
+    if (minutes > 0) {
+        text += minutes + '分' + seconds + '秒';
+    } else {
+        text += seconds + '秒';
+    }
+
+    return text;
+}
+
+// ajax通信成功時のコールバック関数
 const timerCallBack = (response) => {
     if (response.status === "err") {
         alert(response.msg);

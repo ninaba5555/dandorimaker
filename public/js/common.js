@@ -1,4 +1,4 @@
-const ajaxCall = (url, data = {}, doneCallBack = defaultCallBack) =>
+const ajaxCall = (url, data = {}, doneCallBack = defaultDoneCallBack) =>
 {
     $.ajaxSetup({
         headers: {
@@ -18,7 +18,8 @@ const ajaxCall = (url, data = {}, doneCallBack = defaultCallBack) =>
     });
 }
 
-const defaultCallBack = (response) =>
+// ajax通信成功時の標準コールバック関数
+const defaultDoneCallBack = (response) =>
 {
     if (response.status === "err") {
         alert(response.msg);
