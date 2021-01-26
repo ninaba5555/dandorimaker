@@ -16,7 +16,7 @@ const ajaxCall = (url, data = {}, doneCallBack = defaultDoneCallBack) =>
     }).fail((jqXHR, textStatus, errorThrown) => {
         alert("サーバー内でエラーがあったか、サーバーから応答がありませんでした。");
     });
-}
+};
 
 // ajax通信成功時の標準コールバック関数
 const defaultDoneCallBack = (response) =>
@@ -26,4 +26,4 @@ const defaultDoneCallBack = (response) =>
     } else {
         location.reload();
     }
-}
+};

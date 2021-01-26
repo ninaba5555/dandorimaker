@@ -1,10 +1,10 @@
 const up = (id) => {
     ajaxCall("/task/up/" + id);
-}
+};
 
 const down = (id) => {
     ajaxCall("/task/down/" + id);
-}
+};
 
 const submitSortData = () => {
     const $tasks = document.getElementById('tasks').querySelectorAll('[data-id]');
@@ -23,7 +23,7 @@ const submitSortData = () => {
     ajaxCall("/task/sort", {
         id: ids
     });
-}
+};
 
 window.onload = () => {
     let el = document.getElementById('tasks');
@@ -35,4 +35,4 @@ window.onload = () => {
             submitSortData();
         }
     });
-}
+};

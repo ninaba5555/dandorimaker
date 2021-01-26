@@ -29,7 +29,7 @@ const timer = (id, ideal) => {
             end: end
         }, timerCallBack);
     }
-}
+};
 
 // 分秒に変換
 const s2m = (seconds) => {
@@ -49,7 +49,7 @@ const s2m = (seconds) => {
     }
 
     return text;
-}
+};
 
 // ajax通信成功時のコールバック関数
 const timerCallBack = (response) => {
@@ -65,4 +65,4 @@ const timerCallBack = (response) => {
             window.location.href = '/plan';
         }
     }
-}
+};
