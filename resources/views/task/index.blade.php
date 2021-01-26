@@ -26,7 +26,7 @@
     <div class="section">
         <h2 class="section__ttl">一覧</h2>
 
-        <ul id="tasks">
+        <ul id="js-tasks">
             @foreach ($items as $item)
             <li data-id="{{$item->id}}" class="panel panel--2columns tasks__item">
                 <div class="panel__left">

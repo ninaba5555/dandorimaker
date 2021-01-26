@@ -7,7 +7,7 @@ const down = (id) => {
 };
 
 const submitSortData = () => {
-    const $tasks = document.getElementById('tasks').querySelectorAll('[data-id]');
+    const $tasks = document.getElementById('js-tasks').querySelectorAll('[data-id]');
     const tasksLength = $tasks.length;
     let tasksIndex = 0;
     let ids = '';
@@ -26,7 +26,7 @@ const submitSortData = () => {
 };
 
 window.onload = () => {
-    let el = document.getElementById('tasks');
+    let el = document.getElementById('js-tasks');
     Sortable.create(el, {
         handle: '.handle',
         chosenClass: 'tasks__item--chosen',

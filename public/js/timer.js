@@ -1,7 +1,7 @@
 const timer = (id, ideal) => {
     const Format = new DateFormat('yyyy-MM-dd HH:mm:ss');
-    const $timer = document.querySelector('#timer');
-    const $timerBtn = document.querySelector('#timer-btn');
+    const $timer = document.querySelector('#js-timer');
+    const $timerBtn = document.querySelector('#js-timer-btn');
     let start, end;
 
     if ($timerBtn.dataset.mode === 'start') {

@@ -43,8 +43,8 @@
                 @endif
             </div><!--panel__info END-->
 
-            <div id="timer" class="timer"></div>
-            <button id="timer-btn" class="timer-btn" data-mode="start" onclick="timer({{$task->id}}, {{$task->ideal}})">
+            <div id="js-timer" class="timer"></div>
+            <button id="js-timer-btn" class="timer-btn" data-mode="start" onclick="timer({{$task->id}}, {{$task->ideal}})">
                 開始
             </button>
         </div><!--panel END-->
